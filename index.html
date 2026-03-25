@@ -103,10 +103,17 @@
 
     <header class="fixed top-0 z-50 w-full backdrop-blur-md bg-[#120b0d]/80 border-b border-[#39282b]">
         <div class="max-w-[1280px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <span class="material-symbols-outlined text-primary text-4xl">local_fire_department</span>
-                <h2 class="text-white text-xl font-bold tracking-tight uppercase">Sauté Digital</h2>
-            </div>
+            <div class="flex items-center gap-4 group cursor-pointer">
+    <div class="logo-wrapper relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+        <img src="Img/LOGO.png" alt="Sauté Digital Logo" class="logo-img relative z-10 w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+        
+        <div class="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    </div>
+
+    <h2 class="text-white text-lg md:text-xl font-bold tracking-tighter uppercase transition-colors duration-300 group-hover:text-primary">
+        Sauté <span class="text-stroke-thin italic font-light group-hover:text-white">Digital</span>
+    </h2>
+</div>
             <nav class="hidden md:flex items-center gap-10">
                 <a class="text-white/70 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="#work">Work</a>
                 <a class="text-white/70 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="#services">Services</a>
