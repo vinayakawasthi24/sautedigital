@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sauté | Portfolio Vault</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #120b0d;
+            font-family: 'Space Grotesk', sans-serif;
+            color: white;
+        }
+
+        /* Laser Scan Animation */
+        @keyframes laser-scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .animate-laser-scan {
+            animation: laser-scan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        /* Button Shine Flash */
+        @keyframes btn-shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .animate-btn-shine {
+            animation: btn-shine 0.8s ease-in-out forwards;
+        }
+
+        /* Stroke text effect */
+        .text-stroke-thin {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+            color: transparent;
+        }
+
+        .mag-btn {
+            display: inline-flex;
+            transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+            will-change: transform;
+        }
+        
+        .btn-magnetic-wrap {
+            padding: 40px;
+            margin: -40px;
+        }
+    </style>
+</head>
+<body class="bg-[#120b0d]">
+
+    <section id="blueprint" class="py-24 relative overflow-hidden">
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-red-600/5 blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="relative group p-8 md:p-12 bg-[#1f1416] border border-white/5 rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 transition-all duration-700 hover:border-red-600/30">
+                
+                <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-600 to-transparent -translate-x-full group-hover:animate-laser-scan opacity-0 group-hover:opacity-100"></div>
+
+                <div class="text-center md:text-left z-10">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+                        <span class="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse"></span>
+                        <span class="text-[10px] font-mono uppercase tracking-[0.5em] text-white/40">Internal Documentation v2.6</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-extrabold uppercase tracking-tighter leading-none mb-4">
+                        Get the <span class="text-stroke-thin italic font-light">Blueprint.</span>
+                    </h2>
+                    <p class="text-white/50 text-sm max-w-sm">
+                        A condensed PDF of our performance strategies, case studies, and internal creative frameworks.
+                    </p>
+                </div>
+
+                <div class="relative z-10 btn-magnetic-wrap">
+                    <a href="https://drive.google.com/drive/folders/11h9Lc9Jw2zoxNGHgxMPBzZLBUBdE0pXc" download 
+                       class="mag-btn group/btn relative flex items-center justify-center gap-4 bg-white text-black px-10 py-5 rounded-full font-bold uppercase text-[11px] tracking-[0.2em] overflow-hidden transition-all duration-300 hover:bg-red-600 hover:text-white shadow-2xl">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/btn:animate-btn-shine"></div>
+                        
+                        <span class="relative z-10">Download PDF</span>
+                        <span class="material-symbols-outlined relative z-10 text-lg group-hover/btn:translate-y-1 transition-transform">download</span>
+                    </a>
+                    
+                    <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full text-center">
+                        <span class="text-[9px] font-mono uppercase tracking-widest opacity-20">12.8MB • March 2026</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const wrap = document.querySelector('.btn-magnetic-wrap');
+        const btn = document.querySelector('.mag-btn');
+
+        if (wrap && btn) {
+            wrap.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+            });
+
+            wrap.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0px, 0px)`;
+            });
+        }
+    </script>
+</body>
+</html>
